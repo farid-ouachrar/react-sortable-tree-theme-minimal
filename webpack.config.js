@@ -36,7 +36,7 @@ const cssLoader = isLocal => ({
 });
 
 const config = {
-  entry: './index',
+  entry: './src/index',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: '[name].js',

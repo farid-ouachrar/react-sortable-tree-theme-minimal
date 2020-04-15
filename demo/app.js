@@ -1,25 +1,30 @@
-import React, { Component } from 'react';
-import SortableTree, { toggleExpandedForAll } from 'react-sortable-tree';
-import CustomTheme from '../index';
-import './app.css';
+import React, { Component } from "react";
+import SortableTree, { toggleExpandedForAll } from "react-sortable-tree";
+import CustomTheme from "../src/index";
+import "./app.css";
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      searchString: '',
+      searchString: "",
       searchFocusIndex: 0,
       searchFoundCount: null,
       treeData: [
-        { title: 'This is the Full Node Drag theme' },
-        { title: 'You can click anywhere on the node to drag it' },
         {
-          title: 'This node has dragging disabled',
-          subtitle: 'Note how the hover behavior is different',
-          dragDisabled: true,
+          title: "Unnamed array []",
+          type: "array",
+          children: [
+            {
+              title: "Unnamed string",
+              subtitle: "Example output of this block",
+              dragDisabled: true,
+            },
+          ],
         },
-        { title: 'Chicken', children: [{ title: 'Egg' }] },
+        { title: "Unnamed object {}", type: "object" },
+        { title: "Chicken", children: [{ title: "Egg" }] },
       ],
     };
     this.updateTreeData = this.updateTreeData.bind(this);
@@ -58,13 +63,15 @@ class App extends Component {
 
     const alertNodeInfo = ({ node, path, treeIndex }) => {
       const objectString = Object.keys(node)
-        .map(k => (k === 'children' ? 'children: Array' : `${k}: '${node[k]}'`))
-        .join(',\n   ');
+        .map((k) =>
+          k === "children" ? "children: Array" : `${k}: '${node[k]}'`
+        )
+        .join(",\n   ");
 
       global.alert(
-        'Info passed to the icon and button generators:\n\n' +
+        "Info passed to the icon and button generators:\n\n" +
           `node: {\n   ${objectString}\n},\n` +
-          `path: [${path.join(', ')}],\n` +
+          `path: [${path.join(", ")}],\n` +
           `treeIndex: ${treeIndex}`
       );
     };
@@ -87,16 +94,16 @@ class App extends Component {
 
     return (
       <div
-        style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}
+        style={{ display: "flex", flexDirection: "column", height: "100vh" }}
       >
-        <div style={{ flex: '0 0 auto', padding: '0 15px' }}>
+        <div style={{ flex: "0 0 auto", padding: "0 15px" }}>
           <h3>Full Node Drag Theme</h3>
           <button onClick={this.expandAll}>Expand All</button>
           <button onClick={this.collapseAll}>Collapse All</button>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <form
-            style={{ display: 'inline-block' }}
-            onSubmit={event => {
+            style={{ display: "inline-block" }}
+            onSubmit={(event) => {
               event.preventDefault();
             }}
           >
@@ -106,7 +113,7 @@ class App extends Component {
                 id="find-box"
                 type="text"
                 value={searchString}
-                onChange={event =>
+                onChange={(event) =>
                   this.setState({ searchString: event.target.value })
                 }
               />
@@ -137,16 +144,16 @@ class App extends Component {
           </form>
         </div>
 
-        <div style={{ flex: '1 0 50%', padding: '0 0 0 15px' }}>
+        <div style={{ flex: "1 0 50%", padding: "0 0 0 15px" }}>
           <SortableTree
             theme={CustomTheme}
             treeData={treeData}
             onChange={this.updateTreeData}
             searchQuery={searchString}
             searchFocusOffset={searchFocusIndex}
-            style={{width: '600px'}}
+            style={{ width: "600px" }}
             rowHeight={45}
-            searchFinishCallback={matches =>
+            searchFinishCallback={(matches) =>
               this.setState({
                 searchFoundCount: matches.length,
                 searchFocusIndex:
@@ -154,7 +161,7 @@ class App extends Component {
               })
             }
             canDrag={({ node }) => !node.dragDisabled}
-            generateNodeProps={rowInfo => ({
+            generateNodeProps={(rowInfo) => ({
               buttons: [
                 <button onClick={() => alertNodeInfo(rowInfo)}>i</button>,
               ],

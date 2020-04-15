@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styles from './node-content-renderer.scss';
+import styles from './styles/NodeContentRenderer.scss';
 
 function isDescendant(older, younger) {
   return (

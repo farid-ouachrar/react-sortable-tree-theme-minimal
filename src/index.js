@@ -10,8 +10,8 @@
 // nodeContentRenderer: PropTypes.func,
 // placeholderRenderer: PropTypes.func,
 
-import nodeContentRenderer from './node-content-renderer';
-import treeNodeRenderer from './tree-node-renderer'
+import nodeContentRenderer from './NodeContentRenderer';
+import treeNodeRenderer from './TreeNodeRenderer'
 
 module.exports = {
   nodeContentRenderer,

@@ -1,6 +1,6 @@
 import React, { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
-import styles from './tree-node-renderer.scss';
+import styles from './styles/TreeNodeRenderer.scss';
 
 class MinimalThemeTreeNodeRenderer extends Component {
   constructor (props) {
