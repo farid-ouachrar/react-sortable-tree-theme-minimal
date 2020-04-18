@@ -189,6 +189,8 @@ $hover-padding: 3px;
   flex: 0 1 auto;
   display: flex;
   padding-right: 10px;
+  z-index: 500;
+  cursor: pointer;
 
   > div {
     > svg {
