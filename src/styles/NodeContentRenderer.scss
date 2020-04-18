@@ -8,7 +8,6 @@ $hover-padding: 3px;
 
   &:hover {
     opacity: 0.7;
-    padding: $hover-padding $hover-padding $hover-padding 0;
   }
 
   &:active {
@@ -47,7 +46,7 @@ $hover-padding: 3px;
 
   &::before {
     background-color: lightblue;
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
@@ -90,21 +89,86 @@ $hover-padding: 3px;
 
 .rowContents {
   @extend %rowItem;
+
+  --border-color: gray;
+  --border-weight: 1.4px;
+  --dash-size: 8px;
+  --gap-size: 8px;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 500;
   position: relative;
   height: 100%;
-  padding: 0 5px 0 30px;
-  min-width: 230px;
-  flex: 1 0 auto;
+  padding: 0 5px 0 40px;
+  min-width: 400px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: white;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  &:hover {
-    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
-  }
+
+  // background-color: gray;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.rowContents::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, var(--border-color) 100%, transparent 100%)
+      top left no-repeat,
+    linear-gradient(
+        90deg,
+        transparent calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+        transparent calc(var(--gap-size) / 2 + var(--dash-size))
+      )
+      top center repeat-x,
+    linear-gradient(90deg, var(--border-color) 100%, transparent 100%) top right
+      no-repeat,
+    linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top left
+      no-repeat,
+    linear-gradient(
+        0deg,
+        transparent calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+        transparent calc(var(--gap-size) / 2 + var(--dash-size))
+      )
+      center left repeat-y,
+    linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+      left no-repeat,
+    linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+      left no-repeat,
+    linear-gradient(
+        90deg,
+        transparent calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+        transparent calc(var(--gap-size) / 2 + var(--dash-size))
+      )
+      bottom center repeat-x,
+    linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom
+      right no-repeat,
+    linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top right
+      no-repeat,
+    linear-gradient(
+        0deg,
+        transparent calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2),
+        var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)),
+        transparent calc(var(--gap-size) / 2 + var(--dash-size))
+      )
+      center right repeat-y,
+    linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom
+      right no-repeat;
+  background-size: var(--dash-size) var(--border-weight),
+    calc(var(--dash-size) + var(--gap-size)) var(--border-weight),
+    var(--dash-size) var(--border-weight), var(--border-weight) var(--dash-size),
+    var(--border-weight) calc(var(--dash-size) + var(--gap-size)),
+    var(--border-weight) var(--dash-size);
 }
 
 .rowLabel {
@@ -126,7 +190,7 @@ $hover-padding: 3px;
   height: 100%;
   width: 44px;
   background: #d9d9d9
-    url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+')
+    url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+")
     no-repeat center;
   border: solid #aaa 1px;
   box-shadow: 0 2px 2px -2px;
@@ -171,7 +235,7 @@ $hover-padding: 3px;
   $spin-animation-time: 800ms;
 
   &:before {
-    content: '';
+    content: "";
     display: block;
     margin: 0 auto;
     width: 11%;
@@ -193,8 +257,8 @@ $hover-padding: 3px;
     &:nth-of-type(#{$i}),
     &:nth-of-type(#{$i + $point-count / 2}) {
       &:before {
-        animation-delay: - $spin-animation-time + ($spin-animation-time /
-              $point-count * 2 * ($i - 1));
+        animation-delay: -$spin-animation-time +
+          ($spin-animation-time / $point-count * 2 * ($i - 1));
       }
     }
   }
@@ -205,7 +269,7 @@ $hover-padding: 3px;
 }
 
 .rowTitle {
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .rowTitleWithSubtitle {
@@ -231,15 +295,16 @@ $hover-padding: 3px;
   width: 16px;
   height: 16px;
   top: 50%;
-  padding-left: 120px;
+  padding-left: 50px;
   cursor: pointer;
   z-index: 1000;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  &:focus {outline:0;}
 }
 
 .collapseButton {
+  transform: rotate(90deg);
+  transform-origin: 70% -70%;
   &:before {
     content: "\25bc";
   }
@@ -247,7 +312,7 @@ $hover-padding: 3px;
 
 .expandButton {
   &:before {
-    content:"\25b6";
+    content: "\25b6";
   }
 }
 

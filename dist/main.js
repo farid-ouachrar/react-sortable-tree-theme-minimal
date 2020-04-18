@@ -354,7 +354,7 @@
                 default: obj
             };
         }
-        var _nodeContentRenderer = __webpack_require__(5), _nodeContentRenderer2 = _interopRequireDefault(_nodeContentRenderer), _treeNodeRenderer = __webpack_require__(9), _treeNodeRenderer2 = _interopRequireDefault(_treeNodeRenderer);
+        var _NodeContentRenderer = __webpack_require__(5), _NodeContentRenderer2 = _interopRequireDefault(_NodeContentRenderer), _TreeNodeRenderer = __webpack_require__(10), _TreeNodeRenderer2 = _interopRequireDefault(_TreeNodeRenderer);
         // Can override the following:
         //
         // style: PropTypes.shape({}),
@@ -367,8 +367,8 @@
         // nodeContentRenderer: PropTypes.func,
         // placeholderRenderer: PropTypes.func,
         module.exports = {
-            nodeContentRenderer: _nodeContentRenderer2.default,
-            treeNodeRenderer: _treeNodeRenderer2.default,
+            nodeContentRenderer: _NodeContentRenderer2.default,
+            treeNodeRenderer: _TreeNodeRenderer2.default,
             scaffoldBlockPxWidth: 45
         };
     }, /* 5 */
@@ -429,7 +429,7 @@
                 return protoProps && defineProperties(Constructor.prototype, protoProps), staticProps && defineProperties(Constructor, staticProps), 
                 Constructor;
             };
-        }(), _react = __webpack_require__(0), _react2 = _interopRequireDefault(_react), _propTypes = __webpack_require__(1), _propTypes2 = _interopRequireDefault(_propTypes), _nodeContentRenderer = __webpack_require__(6), _nodeContentRenderer2 = _interopRequireDefault(_nodeContentRenderer), MinimalThemeNodeContentRenderer = function(_Component) {
+        }(), _react = __webpack_require__(0), _react2 = _interopRequireDefault(_react), _propTypes = __webpack_require__(1), _propTypes2 = _interopRequireDefault(_propTypes), _NodeContentRenderer = __webpack_require__(6), _NodeContentRenderer2 = _interopRequireDefault(_NodeContentRenderer), _Chevron = __webpack_require__(9), _Chevron2 = _interopRequireDefault(_Chevron), MinimalThemeNodeContentRenderer = function(_Component) {
             function MinimalThemeNodeContentRenderer() {
                 return _classCallCheck(this, MinimalThemeNodeContentRenderer), _possibleConstructorReturn(this, (MinimalThemeNodeContentRenderer.__proto__ || Object.getPrototypeOf(MinimalThemeNodeContentRenderer)).apply(this, arguments));
             }
@@ -440,37 +440,36 @@
                     _props.buttons), className = _props.className, style = _props.style, didDrop = _props.didDrop, otherProps = (_props.swapFrom, 
                     _props.swapLength, _props.swapDepth, _props.treeId, _props.isOver, _props.parentNode, 
                     _props.rowDirection, _objectWithoutProperties(_props, [ "scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "icons", "buttons", "className", "style", "didDrop", "swapFrom", "swapLength", "swapDepth", "treeId", "isOver", "parentNode", "rowDirection" ])), nodeTitle = title || node.title, nodeSubtitle = subtitle || node.subtitle, isDraggedDescendant = draggedNode && isDescendant(draggedNode, node), isLandingPadActive = !didDrop && isDragging, nodeContent = connectDragPreview(_react2.default.createElement("div", {
-                        className: _nodeContentRenderer2.default.rowContents + (isSearchMatch ? " " + _nodeContentRenderer2.default.rowSearchMatch : "") + (isSearchFocus ? " " + _nodeContentRenderer2.default.rowSearchFocus : "") + (canDrag ? "" : " " + _nodeContentRenderer2.default.rowContentsDragDisabled)
+                        className: _NodeContentRenderer2.default.rowContents + (isSearchMatch ? " " + _NodeContentRenderer2.default.rowSearchMatch : "") + (isSearchFocus ? " " + _NodeContentRenderer2.default.rowSearchFocus : "") + (canDrag ? "" : " " + _NodeContentRenderer2.default.rowContentsDragDisabled)
                     }, _react2.default.createElement("div", {
-                        className: _nodeContentRenderer2.default.rowLabel
+                        className: _NodeContentRenderer2.default.rowLabel
                     }, _react2.default.createElement("span", {
-                        className: _nodeContentRenderer2.default.rowTitle + (node.subtitle ? " " + _nodeContentRenderer2.default.rowTitleWithSubtitle : "")
+                        className: _NodeContentRenderer2.default.rowTitle + (node.subtitle ? " " + _NodeContentRenderer2.default.rowTitleWithSubtitle : "")
                     }, "function" == typeof nodeTitle ? nodeTitle({
                         node: node,
                         path: path,
                         treeIndex: treeIndex
                     }) : nodeTitle), nodeSubtitle && _react2.default.createElement("span", {
-                        className: _nodeContentRenderer2.default.rowSubtitle
+                        className: _NodeContentRenderer2.default.rowSubtitle
                     }, "function" == typeof nodeSubtitle ? nodeSubtitle({
                         node: node,
                         path: path,
                         treeIndex: treeIndex
                     }) : nodeSubtitle)), _react2.default.createElement("div", {
-                        className: _nodeContentRenderer2.default.rowToolbar
+                        className: _NodeContentRenderer2.default.rowToolbar
                     }, buttons.map(function(btn, index) {
                         return _react2.default.createElement("div", {
                             key: index,
-                            className: _nodeContentRenderer2.default.toolbarButton
+                            className: _NodeContentRenderer2.default.toolbarButton
                         }, btn);
                     }))));
                     return _react2.default.createElement("div", _extends({
                         style: {
                             height: "100%"
                         }
-                    }, otherProps), toggleChildrenVisibility && node.children && (node.children.length > 0 || "function" == typeof node.children) && _react2.default.createElement("div", null, _react2.default.createElement("button", {
+                    }, otherProps), toggleChildrenVisibility && node.children && (node.children.length > 0 || "function" == typeof node.children) && _react2.default.createElement("div", null, _react2.default.createElement(_Chevron2.default, {
                         type: "button",
-                        "aria-label": node.expanded ? "Collapse" : "Expand",
-                        className: node.expanded ? _nodeContentRenderer2.default.collapseButton : _nodeContentRenderer2.default.expandButton,
+                        className: node.expanded ? _NodeContentRenderer2.default.collapseButton : _NodeContentRenderer2.default.expandButton,
                         onClick: function() {
                             return toggleChildrenVisibility({
                                 node: node,
@@ -482,11 +481,11 @@
                         style: {
                             width: scaffoldBlockPxWidth
                         },
-                        className: _nodeContentRenderer2.default.lineChildren
+                        className: _NodeContentRenderer2.default.lineChildren
                     })), _react2.default.createElement("div", {
-                        className: _nodeContentRenderer2.default.rowWrapper + (canDrag ? "" : " " + _nodeContentRenderer2.default.rowWrapperDragDisabled)
+                        className: _NodeContentRenderer2.default.rowWrapper + (canDrag ? "" : " " + _NodeContentRenderer2.default.rowWrapperDragDisabled)
                     }, _react2.default.createElement("div", {
-                        className: _nodeContentRenderer2.default.row + (isLandingPadActive ? " " + _nodeContentRenderer2.default.rowLandingPad : "") + (isLandingPadActive && !canDrop ? " " + _nodeContentRenderer2.default.rowCancelPad : "") + (className ? " " + className : ""),
+                        className: _NodeContentRenderer2.default.row + (isLandingPadActive ? " " + _NodeContentRenderer2.default.rowLandingPad : "") + (isLandingPadActive && !canDrop ? " " + _NodeContentRenderer2.default.rowCancelPad : "") + (className ? " " + className : ""),
                         style: _extends({
                             opacity: isDraggedDescendant ? .5 : 1,
                             paddingLeft: scaffoldBlockPxWidth
@@ -569,7 +568,7 @@
     function(module, exports, __webpack_require__) {
         exports = module.exports = __webpack_require__(2)(!1), // imports
         // module
-        exports.push([ module.i, '.rstcustom__rowWrapper {\n  padding: 2px 2px 2px 0;\n  height: 100%;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: move; }\n  .rstcustom__rowWrapper:hover {\n    opacity: 0.7;\n    padding: 3px 3px 3px 0; }\n  .rstcustom__rowWrapper:active {\n    opacity: 1; }\n\n.rstcustom__rowWrapperDragDisabled {\n  cursor: default; }\n  .rstcustom__rowWrapperDragDisabled:hover {\n    opacity: 1; }\n\n.rstcustom__row {\n  height: 100%;\n  white-space: nowrap;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .rstcustom__row > * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box; }\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rstcustom__rowLandingPad, .rstcustom__rowCancelPad {\n  border: none !important;\n  -webkit-box-shadow: none !important;\n          box-shadow: none !important;\n  outline: none !important;\n  width: 500px; }\n  .rstcustom__rowLandingPad *, .rstcustom__rowCancelPad * {\n    opacity: 0 !important; }\n  .rstcustom__rowLandingPad::before, .rstcustom__rowCancelPad::before {\n    background-color: lightblue;\n    content: \'\';\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: -1;\n    width: 100%; }\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rstcustom__rowCancelPad::before {\n  background-color: #e6a8ad; }\n\n/**\n * Nodes matching the search conditions are highlighted\n */\n.rstcustom__rowSearchMatch {\n  outline: solid 1px #0080ff; }\n\n/**\n * The node that matches the search conditions and is currently focused\n */\n.rstcustom__rowSearchFocus {\n  outline: solid 1px #fc6421; }\n\n.rstcustom__rowContents, .rstcustom__rowLabel, .rstcustom__rowToolbar, .rstcustom__moveHandle, .rstcustom__loadingHandle, .rstcustom__toolbarButton {\n  display: inline-block;\n  vertical-align: middle; }\n\n.rstcustom__rowContents {\n  position: relative;\n  height: 100%;\n  padding: 0 5px 0 30px;\n  min-width: 230px;\n  -webkit-box-flex: 1;\n      -ms-flex: 1 0 auto;\n          flex: 1 0 auto;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  background-color: white;\n  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);\n  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }\n  .rstcustom__rowContents:hover {\n    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);\n            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23); }\n\n.rstcustom__rowLabel {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  padding-right: 20px;\n  width: 100%; }\n\n.rstcustom__rowToolbar {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.rstcustom__moveHandle, .rstcustom__loadingHandle {\n  height: 100%;\n  width: 44px;\n  background: #d9d9d9 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+") no-repeat center;\n  border: solid #aaa 1px;\n  -webkit-box-shadow: 0 2px 2px -2px;\n          box-shadow: 0 2px 2px -2px;\n  cursor: move;\n  border-radius: 1px;\n  z-index: 1; }\n\n.rstcustom__loadingHandle {\n  cursor: default;\n  background: #d9d9d9; }\n\n@-webkit-keyframes rstcustom__pointFade {\n  0%,\n  19.999%,\n  100% {\n    opacity: 0; }\n  20% {\n    opacity: 1; } }\n\n@keyframes rstcustom__pointFade {\n  0%,\n  19.999%,\n  100% {\n    opacity: 0; }\n  20% {\n    opacity: 1; } }\n\n.rstcustom__loadingCircle {\n  width: 80%;\n  height: 80%;\n  margin: 10%;\n  position: relative; }\n\n.rstcustom__loadingCirclePoint {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0; }\n  .rstcustom__loadingCirclePoint:before {\n    content: \'\';\n    display: block;\n    margin: 0 auto;\n    width: 11%;\n    height: 30%;\n    background-color: #fff;\n    border-radius: 30%;\n    -webkit-animation: rstcustom__pointFade 800ms infinite ease-in-out both;\n            animation: rstcustom__pointFade 800ms infinite ease-in-out both; }\n  .rstcustom__loadingCirclePoint:nth-of-type(1) {\n    -webkit-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(7) {\n    -webkit-transform: rotate(180deg);\n        -ms-transform: rotate(180deg);\n            transform: rotate(180deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(1):before, .rstcustom__loadingCirclePoint:nth-of-type(7):before {\n    -webkit-animation-delay: -800ms;\n            animation-delay: -800ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(2) {\n    -webkit-transform: rotate(30deg);\n        -ms-transform: rotate(30deg);\n            transform: rotate(30deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(8) {\n    -webkit-transform: rotate(210deg);\n        -ms-transform: rotate(210deg);\n            transform: rotate(210deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(2):before, .rstcustom__loadingCirclePoint:nth-of-type(8):before {\n    -webkit-animation-delay: -666.66667ms;\n            animation-delay: -666.66667ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(3) {\n    -webkit-transform: rotate(60deg);\n        -ms-transform: rotate(60deg);\n            transform: rotate(60deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(9) {\n    -webkit-transform: rotate(240deg);\n        -ms-transform: rotate(240deg);\n            transform: rotate(240deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(3):before, .rstcustom__loadingCirclePoint:nth-of-type(9):before {\n    -webkit-animation-delay: -533.33333ms;\n            animation-delay: -533.33333ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(4) {\n    -webkit-transform: rotate(90deg);\n        -ms-transform: rotate(90deg);\n            transform: rotate(90deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(10) {\n    -webkit-transform: rotate(270deg);\n        -ms-transform: rotate(270deg);\n            transform: rotate(270deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(4):before, .rstcustom__loadingCirclePoint:nth-of-type(10):before {\n    -webkit-animation-delay: -400ms;\n            animation-delay: -400ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(5) {\n    -webkit-transform: rotate(120deg);\n        -ms-transform: rotate(120deg);\n            transform: rotate(120deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(11) {\n    -webkit-transform: rotate(300deg);\n        -ms-transform: rotate(300deg);\n            transform: rotate(300deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(5):before, .rstcustom__loadingCirclePoint:nth-of-type(11):before {\n    -webkit-animation-delay: -266.66667ms;\n            animation-delay: -266.66667ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(6) {\n    -webkit-transform: rotate(150deg);\n        -ms-transform: rotate(150deg);\n            transform: rotate(150deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(12) {\n    -webkit-transform: rotate(330deg);\n        -ms-transform: rotate(330deg);\n            transform: rotate(330deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(6):before, .rstcustom__loadingCirclePoint:nth-of-type(12):before {\n    -webkit-animation-delay: -133.33333ms;\n            animation-delay: -133.33333ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(7) {\n    -webkit-transform: rotate(180deg);\n        -ms-transform: rotate(180deg);\n            transform: rotate(180deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(13) {\n    -webkit-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n            transform: rotate(360deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(7):before, .rstcustom__loadingCirclePoint:nth-of-type(13):before {\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms; }\n\n.rstcustom__rowTitle {\n  font-weight: bold; }\n\n.rstcustom__rowTitleWithSubtitle {\n  display: block; }\n\n.rstcustom__rowSubtitle {\n  font-size: 70%;\n  line-height: 0.7;\n  width: 95%;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  display: inline-block; }\n\n.rstcustom__collapseButton,\n.rstcustom__expandButton {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background: none;\n  border: none;\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  top: 50%;\n  padding-left: 120px;\n  cursor: pointer;\n  z-index: 1000;\n  -webkit-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  cursor: pointer; }\n  .rstcustom__collapseButton:focus,\n  .rstcustom__expandButton:focus {\n    outline: 0; }\n\n.rstcustom__collapseButton:before {\n  content: "\\25BC"; }\n\n.rstcustom__expandButton:before {\n  content: "\\25B6"; }\n\n/**\n * Line for under a node with children\n */\n.rstcustom__lineChildren {\n  height: 100%;\n  display: inline-block;\n  position: absolute; }\n\n.rstcustom__contentContainer {\n  width: 75%; }\n', "" ]), 
+        exports.push([ module.i, '.rstcustom__rowWrapper {\n  padding: 2px 2px 2px 0;\n  height: 100%;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: move; }\n  .rstcustom__rowWrapper:hover {\n    opacity: 0.7; }\n  .rstcustom__rowWrapper:active {\n    opacity: 1; }\n\n.rstcustom__rowWrapperDragDisabled {\n  cursor: default; }\n  .rstcustom__rowWrapperDragDisabled:hover {\n    opacity: 1; }\n\n.rstcustom__row {\n  height: 100%;\n  white-space: nowrap;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n  .rstcustom__row > * {\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box; }\n\n/**\n * The outline of where the element will go if dropped, displayed while dragging\n */\n.rstcustom__rowLandingPad, .rstcustom__rowCancelPad {\n  border: none !important;\n  -webkit-box-shadow: none !important;\n          box-shadow: none !important;\n  outline: none !important;\n  width: 500px; }\n  .rstcustom__rowLandingPad *, .rstcustom__rowCancelPad * {\n    opacity: 0 !important; }\n  .rstcustom__rowLandingPad::before, .rstcustom__rowCancelPad::before {\n    background-color: lightblue;\n    content: "";\n    position: absolute;\n    top: 0;\n    right: 0;\n    bottom: 0;\n    left: 0;\n    z-index: -1;\n    width: 100%; }\n\n/**\n * Alternate appearance of the landing pad when the dragged location is invalid\n */\n.rstcustom__rowCancelPad::before {\n  background-color: #e6a8ad; }\n\n/**\n * Nodes matching the search conditions are highlighted\n */\n.rstcustom__rowSearchMatch {\n  outline: solid 1px #0080ff; }\n\n/**\n * The node that matches the search conditions and is currently focused\n */\n.rstcustom__rowSearchFocus {\n  outline: solid 1px #fc6421; }\n\n.rstcustom__rowContents, .rstcustom__rowLabel, .rstcustom__rowToolbar, .rstcustom__moveHandle, .rstcustom__loadingHandle, .rstcustom__toolbarButton {\n  display: inline-block;\n  vertical-align: middle; }\n\n.rstcustom__rowContents {\n  --border-color: gray;\n  --border-weight: 1.4px;\n  --dash-size: 8px;\n  --gap-size: 8px;\n  font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Oxygen, Ubuntu, Cantarell, \'Open Sans\', \'Helvetica Neue\', sans-serif;\n  font-weight: 500;\n  position: relative;\n  height: 100%;\n  padding: 0 5px 0 40px;\n  min-width: 400px;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);\n  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); }\n\n.rstcustom__rowContents::after {\n  content: "";\n  position: absolute;\n  top: 0;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  background: -webkit-gradient(linear, left top, right top, color-stop(100%, var(--border-color)), to(transparent)) top left no-repeat, -webkit-gradient(linear, left top, right top, from(transparent), color-stop(var(--border-color)), color-stop(var(--border-color)), to(transparent)) top center repeat-x, -webkit-gradient(linear, left top, right top, color-stop(100%, var(--border-color)), to(transparent)) top right no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--border-color)), to(transparent)) top left no-repeat, -webkit-gradient(linear, left bottom, left top, from(transparent), color-stop(var(--border-color)), color-stop(var(--border-color)), to(transparent)) center left repeat-y, -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--border-color)), to(transparent)) bottom left no-repeat, -webkit-gradient(linear, left top, right top, color-stop(100%, var(--border-color)), to(transparent)) bottom left no-repeat, -webkit-gradient(linear, left top, right top, from(transparent), color-stop(var(--border-color)), color-stop(var(--border-color)), to(transparent)) bottom center repeat-x, -webkit-gradient(linear, left top, right top, color-stop(100%, var(--border-color)), to(transparent)) bottom right no-repeat, -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--border-color)), to(transparent)) top right no-repeat, -webkit-gradient(linear, left bottom, left top, from(transparent), color-stop(var(--border-color)), color-stop(var(--border-color)), to(transparent)) center right repeat-y, -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--border-color)), to(transparent)) bottom right no-repeat;\n  background: linear-gradient(90deg, var(--border-color) 100%, transparent 100%) top left no-repeat, linear-gradient(90deg, transparent calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)), transparent calc(var(--gap-size) / 2 + var(--dash-size))) top center repeat-x, linear-gradient(90deg, var(--border-color) 100%, transparent 100%) top right no-repeat, linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top left no-repeat, linear-gradient(0deg, transparent calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)), transparent calc(var(--gap-size) / 2 + var(--dash-size))) center left repeat-y, linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom left no-repeat, linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom left no-repeat, linear-gradient(90deg, transparent calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)), transparent calc(var(--gap-size) / 2 + var(--dash-size))) bottom center repeat-x, linear-gradient(90deg, var(--border-color) 100%, transparent 100%) bottom right no-repeat, linear-gradient(0deg, var(--border-color) 100%, transparent 100%) top right no-repeat, linear-gradient(0deg, transparent calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2), var(--border-color) calc(var(--gap-size) / 2 + var(--dash-size)), transparent calc(var(--gap-size) / 2 + var(--dash-size))) center right repeat-y, linear-gradient(0deg, var(--border-color) 100%, transparent 100%) bottom right no-repeat;\n  background-size: var(--dash-size) var(--border-weight), calc(var(--dash-size) + var(--gap-size)) var(--border-weight), var(--dash-size) var(--border-weight), var(--border-weight) var(--dash-size), var(--border-weight) calc(var(--dash-size) + var(--gap-size)), var(--border-weight) var(--dash-size); }\n\n.rstcustom__rowLabel {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  padding-right: 20px;\n  width: 100%; }\n\n.rstcustom__rowToolbar {\n  -webkit-box-flex: 0;\n      -ms-flex: 0 1 auto;\n          flex: 0 1 auto;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex; }\n\n.rstcustom__moveHandle, .rstcustom__loadingHandle {\n  height: 100%;\n  width: 44px;\n  background: #d9d9d9 url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0MiIgaGVpZ2h0PSI0MiI+PGcgc3Ryb2tlPSIjRkZGIiBzdHJva2Utd2lkdGg9IjIuOSIgPjxwYXRoIGQ9Ik0xNCAxNS43aDE0LjQiLz48cGF0aCBkPSJNMTQgMjEuNGgxNC40Ii8+PHBhdGggZD0iTTE0IDI3LjFoMTQuNCIvPjwvZz4KPC9zdmc+") no-repeat center;\n  border: solid #aaa 1px;\n  -webkit-box-shadow: 0 2px 2px -2px;\n          box-shadow: 0 2px 2px -2px;\n  cursor: move;\n  border-radius: 1px;\n  z-index: 1; }\n\n.rstcustom__loadingHandle {\n  cursor: default;\n  background: #d9d9d9; }\n\n@-webkit-keyframes rstcustom__pointFade {\n  0%,\n  19.999%,\n  100% {\n    opacity: 0; }\n  20% {\n    opacity: 1; } }\n\n@keyframes rstcustom__pointFade {\n  0%,\n  19.999%,\n  100% {\n    opacity: 0; }\n  20% {\n    opacity: 1; } }\n\n.rstcustom__loadingCircle {\n  width: 80%;\n  height: 80%;\n  margin: 10%;\n  position: relative; }\n\n.rstcustom__loadingCirclePoint {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0; }\n  .rstcustom__loadingCirclePoint:before {\n    content: "";\n    display: block;\n    margin: 0 auto;\n    width: 11%;\n    height: 30%;\n    background-color: #fff;\n    border-radius: 30%;\n    -webkit-animation: rstcustom__pointFade 800ms infinite ease-in-out both;\n            animation: rstcustom__pointFade 800ms infinite ease-in-out both; }\n  .rstcustom__loadingCirclePoint:nth-of-type(1) {\n    -webkit-transform: rotate(0deg);\n        -ms-transform: rotate(0deg);\n            transform: rotate(0deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(7) {\n    -webkit-transform: rotate(180deg);\n        -ms-transform: rotate(180deg);\n            transform: rotate(180deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(1):before, .rstcustom__loadingCirclePoint:nth-of-type(7):before {\n    -webkit-animation-delay: -800ms;\n            animation-delay: -800ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(2) {\n    -webkit-transform: rotate(30deg);\n        -ms-transform: rotate(30deg);\n            transform: rotate(30deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(8) {\n    -webkit-transform: rotate(210deg);\n        -ms-transform: rotate(210deg);\n            transform: rotate(210deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(2):before, .rstcustom__loadingCirclePoint:nth-of-type(8):before {\n    -webkit-animation-delay: -666.66667ms;\n            animation-delay: -666.66667ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(3) {\n    -webkit-transform: rotate(60deg);\n        -ms-transform: rotate(60deg);\n            transform: rotate(60deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(9) {\n    -webkit-transform: rotate(240deg);\n        -ms-transform: rotate(240deg);\n            transform: rotate(240deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(3):before, .rstcustom__loadingCirclePoint:nth-of-type(9):before {\n    -webkit-animation-delay: -533.33333ms;\n            animation-delay: -533.33333ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(4) {\n    -webkit-transform: rotate(90deg);\n        -ms-transform: rotate(90deg);\n            transform: rotate(90deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(10) {\n    -webkit-transform: rotate(270deg);\n        -ms-transform: rotate(270deg);\n            transform: rotate(270deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(4):before, .rstcustom__loadingCirclePoint:nth-of-type(10):before {\n    -webkit-animation-delay: -400ms;\n            animation-delay: -400ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(5) {\n    -webkit-transform: rotate(120deg);\n        -ms-transform: rotate(120deg);\n            transform: rotate(120deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(11) {\n    -webkit-transform: rotate(300deg);\n        -ms-transform: rotate(300deg);\n            transform: rotate(300deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(5):before, .rstcustom__loadingCirclePoint:nth-of-type(11):before {\n    -webkit-animation-delay: -266.66667ms;\n            animation-delay: -266.66667ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(6) {\n    -webkit-transform: rotate(150deg);\n        -ms-transform: rotate(150deg);\n            transform: rotate(150deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(12) {\n    -webkit-transform: rotate(330deg);\n        -ms-transform: rotate(330deg);\n            transform: rotate(330deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(6):before, .rstcustom__loadingCirclePoint:nth-of-type(12):before {\n    -webkit-animation-delay: -133.33333ms;\n            animation-delay: -133.33333ms; }\n  .rstcustom__loadingCirclePoint:nth-of-type(7) {\n    -webkit-transform: rotate(180deg);\n        -ms-transform: rotate(180deg);\n            transform: rotate(180deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(13) {\n    -webkit-transform: rotate(360deg);\n        -ms-transform: rotate(360deg);\n            transform: rotate(360deg); }\n  .rstcustom__loadingCirclePoint:nth-of-type(7):before, .rstcustom__loadingCirclePoint:nth-of-type(13):before {\n    -webkit-animation-delay: 0ms;\n            animation-delay: 0ms; }\n\n.rstcustom__rowTitle {\n  font-weight: 500; }\n\n.rstcustom__rowTitleWithSubtitle {\n  display: block; }\n\n.rstcustom__rowSubtitle {\n  font-size: 70%;\n  line-height: 0.7;\n  width: 95%;\n  overflow: hidden;\n  white-space: nowrap;\n  text-overflow: ellipsis;\n  display: inline-block; }\n\n.rstcustom__collapseButton,\n.rstcustom__expandButton {\n  -webkit-appearance: none;\n     -moz-appearance: none;\n          appearance: none;\n  background: none;\n  border: none;\n  position: absolute;\n  width: 16px;\n  height: 16px;\n  top: 50%;\n  padding-left: 50px;\n  cursor: pointer;\n  z-index: 1000;\n  -webkit-transform: translate(-50%, -50%);\n      -ms-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  cursor: pointer; }\n\n.rstcustom__collapseButton {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n  -webkit-transform-origin: 70% -70%;\n      -ms-transform-origin: 70% -70%;\n          transform-origin: 70% -70%; }\n  .rstcustom__collapseButton:before {\n    content: "\\25BC"; }\n\n.rstcustom__expandButton:before {\n  content: "\\25B6"; }\n\n/**\n * Line for under a node with children\n */\n.rstcustom__lineChildren {\n  height: 100%;\n  display: inline-block;\n  position: absolute; }\n\n.rstcustom__contentContainer {\n  width: 75%; }\n', "" ]), 
         // exports
         exports.locals = {
             rowWrapper: "rstcustom__rowWrapper",
@@ -640,6 +639,40 @@
     /***/
     function(module, exports, __webpack_require__) {
         "use strict";
+        function Chevron(props) {
+            return React.createElement("svg", _extends({
+                width: 24,
+                height: 24,
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: 3,
+                strokeLinecap: "round",
+                strokeLinejoin: "round"
+            }, props), React.createElement("path", {
+                d: "M9 18l6-6-6-6"
+            }));
+        }
+        Object.defineProperty(exports, "__esModule", {
+            value: !0
+        });
+        var _extends = Object.assign || function(target) {
+            for (var i = 1; i < arguments.length; i++) {
+                var source = arguments[i];
+                for (var key in source) Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+            }
+            return target;
+        }, _react = __webpack_require__(0), React = function(obj) {
+            if (obj && obj.__esModule) return obj;
+            var newObj = {};
+            if (null != obj) for (var key in obj) Object.prototype.hasOwnProperty.call(obj, key) && (newObj[key] = obj[key]);
+            return newObj.default = obj, newObj;
+        }(_react);
+        exports.default = Chevron;
+    }, /* 10 */
+    /***/
+    function(module, exports, __webpack_require__) {
+        "use strict";
         function _interopRequireDefault(obj) {
             return obj && obj.__esModule ? obj : {
                 default: obj
@@ -689,7 +722,7 @@
                 return protoProps && defineProperties(Constructor.prototype, protoProps), staticProps && defineProperties(Constructor, staticProps), 
                 Constructor;
             };
-        }(), _react = __webpack_require__(0), _react2 = _interopRequireDefault(_react), _propTypes = __webpack_require__(1), _propTypes2 = _interopRequireDefault(_propTypes), _treeNodeRenderer = __webpack_require__(10), _treeNodeRenderer2 = _interopRequireDefault(_treeNodeRenderer), MinimalThemeTreeNodeRenderer = function(_Component) {
+        }(), _react = __webpack_require__(0), _react2 = _interopRequireDefault(_react), _propTypes = __webpack_require__(1), _propTypes2 = _interopRequireDefault(_propTypes), _TreeNodeRenderer = __webpack_require__(11), _TreeNodeRenderer2 = _interopRequireDefault(_TreeNodeRenderer), MinimalThemeTreeNodeRenderer = function(_Component) {
             function MinimalThemeTreeNodeRenderer(props) {
                 _classCallCheck(this, MinimalThemeTreeNodeRenderer);
                 var _this = _possibleConstructorReturn(this, (MinimalThemeTreeNodeRenderer.__proto__ || Object.getPrototypeOf(MinimalThemeTreeNodeRenderer)).call(this, props));
@@ -725,9 +758,9 @@
                         onMouseLeave: this.bound.handleMouseLeave
                     }, otherProps, {
                         onFocus: function() {},
-                        className: _treeNodeRenderer2.default.node + (this.state.highlight ? " " + _treeNodeRenderer2.default.highlight : "") + (dropType ? " " + _treeNodeRenderer2.default[dropType] : "")
+                        className: _TreeNodeRenderer2.default.node + (this.state.highlight ? " " + _TreeNodeRenderer2.default.highlight : "") + (dropType ? " " + _TreeNodeRenderer2.default[dropType] : "")
                     }), _react2.default.createElement("div", {
-                        className: _treeNodeRenderer2.default.nodeContent,
+                        className: _TreeNodeRenderer2.default.nodeContent,
                         style: {
                             paddingLeft: scaffoldBlockPxWidth * scaffoldBlockCount
                         }
@@ -769,12 +802,12 @@
             node: _propTypes2.default.shape({}).isRequired,
             path: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([ _propTypes2.default.string, _propTypes2.default.number ])).isRequired
         }, exports.default = MinimalThemeTreeNodeRenderer;
-    }, /* 10 */
+    }, /* 11 */
     /***/
     function(module, exports, __webpack_require__) {
         // style-loader: Adds some css to the DOM by adding a <style> tag
         // load the styles
-        var content = __webpack_require__(11);
+        var content = __webpack_require__(12);
         "string" == typeof content && (content = [ [ module.i, content, "" ] ]);
         // Prepare cssTransformation
         var options = {
@@ -785,12 +818,12 @@
         // add the styles to the DOM
         __webpack_require__(3)(content, options);
         content.locals && (module.exports = content.locals);
-    }, /* 11 */
+    }, /* 12 */
     /***/
     function(module, exports, __webpack_require__) {
         exports = module.exports = __webpack_require__(2)(!1), // imports
         // module
-        exports.push([ module.i, ".rstcustom__node {\n  width: 50%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  min-width: 100%;\n  overflow: hidden; }\n\n.rstcustom__nodeContent {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 80%; }\n\n.rstcustom__validDrop {\n  background: #26C281; }\n\n.rstcustom__invalidDrop {\n  background: #C0392B; }\n\n.rstcustom__highlight {\n  background: rgba(240, 240, 240, 0.7);\n  height: 100%;\n  cursor: pointer; }\n", "" ]), 
+        exports.push([ module.i, ".rstcustom__node {\n  height: 52px !important;\n  width: 50%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  min-width: 100%;\n  overflow: hidden; }\n\n.rstcustom__nodeContent {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 80%; }\n\n.rstcustom__validDrop {\n  background: #26C281; }\n\n.rstcustom__invalidDrop {\n  background: #C0392B; }\n\n.rstcustom__highlight {\n  cursor: pointer; }\n", "" ]), 
         // exports
         exports.locals = {
             node: "rstcustom__node",

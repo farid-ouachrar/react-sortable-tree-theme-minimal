@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styles from './styles/NodeContentRenderer.scss';
+import Chevron from './icons/Chevron';
 
 function isDescendant(older, younger) {
   return (
@@ -106,9 +107,8 @@ class MinimalThemeNodeContentRenderer extends Component {
           node.children &&
           (node.children.length > 0 || typeof node.children === 'function') && (
             <div>
-              <button
+              <Chevron
                 type="button"
-                aria-label={node.expanded ? 'Collapse' : 'Expand'}
                 className={
                   node.expanded ? styles.collapseButton : styles.expandButton
                 }

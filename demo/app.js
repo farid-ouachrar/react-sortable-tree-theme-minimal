@@ -144,15 +144,15 @@ class App extends Component {
           </form>
         </div>
 
-        <div style={{ flex: "1 0 50%", padding: "0 0 0 15px" }}>
+        <div style={{ flex: "1 0 50%", padding: "0 0 0 0px", outline: "none" }}>
           <SortableTree
             theme={CustomTheme}
             treeData={treeData}
             onChange={this.updateTreeData}
             searchQuery={searchString}
             searchFocusOffset={searchFocusIndex}
-            style={{ width: "600px" }}
-            rowHeight={45}
+            // style={{ width: "600px" }}
+            qHeight={45}
             searchFinishCallback={(matches) =>
               this.setState({
                 searchFoundCount: matches.length,
@@ -163,7 +163,7 @@ class App extends Component {
             canDrag={({ node }) => !node.dragDisabled}
             generateNodeProps={(rowInfo) => ({
               buttons: [
-                <button onClick={() => alertNodeInfo(rowInfo)}>i</button>,
+                <button style={{outline: "none"}} onClick={() => alertNodeInfo(rowInfo)}>i</button>,
               ],
             })}
           />
