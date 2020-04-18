@@ -6,13 +6,13 @@ $hover-padding: 3px;
   box-sizing: border-box;
   cursor: default;
 
-  &:hover {
-    opacity: 0.7;
-  }
+  // &:hover {
+  //   opacity: 0.7;
+  // }
 
-  &:active {
-    opacity: 1;
-  }
+  // &:active {
+  //   opacity: 1;
+  // }
 }
 
 .rowWrapperDragDisabled {
@@ -188,7 +188,7 @@ $hover-padding: 3px;
   @extend %rowItem;
   flex: 0 1 auto;
   display: flex;
-  padding-right: 10px;
+  padding-right: 10px
   z-index: 500;
   cursor: pointer;
 
