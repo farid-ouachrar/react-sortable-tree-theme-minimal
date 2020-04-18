@@ -831,7 +831,7 @@
     function(module, exports, __webpack_require__) {
         exports = module.exports = __webpack_require__(2)(!1), // imports
         // module
-        exports.push([ module.i, ".rstcustom__node {\n  height: 52px !important;\n  width: 50%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  min-width: 100%;\n  overflow: hidden; }\n\n.rstcustom__nodeContent {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 80%; }\n\n.rstcustom__validDrop {\n  background: #26C281; }\n\n.rstcustom__invalidDrop {\n  background: #C0392B; }\n\n.rstcustom__highlight {\n  cursor: pointer; }\n", "" ]), 
+        exports.push([ module.i, ".rstcustom__node {\n  height: 52px !important;\n  width: 50%;\n  white-space: nowrap;\n  position: relative;\n  text-align: left;\n  min-width: 100%; }\n\n.rstcustom__nodeContent {\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  width: 80%; }\n\n.rstcustom__validDrop {\n  background: #26C281; }\n\n.rstcustom__invalidDrop {\n  background: #C0392B; }\n\n.rstcustom__highlight {\n  cursor: pointer; }\n", "" ]), 
         // exports
         exports.locals = {
             node: "rstcustom__node",
