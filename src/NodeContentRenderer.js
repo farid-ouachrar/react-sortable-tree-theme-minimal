@@ -13,6 +13,14 @@ function isDescendant(older, younger) {
   );
 }
 
+
+const nodeTypes = {
+  array: "[]",
+  object: "{}",
+  string: "S",
+  number: "N"
+}
+
 // eslint-disable-next-line react/prefer-stateless-function
 class MinimalThemeNodeContentRenderer extends Component {
   render() {
@@ -59,6 +67,10 @@ class MinimalThemeNodeContentRenderer extends Component {
           (!canDrag ? ` ${styles.rowContentsDragDisabled}` : '')
         }
       >
+        {
+          node.type && <span className={styles.nodeType}>{nodeTypes[node.type]}</span>
+        }
+
         <div className={styles.rowLabel}>
           <span
             className={

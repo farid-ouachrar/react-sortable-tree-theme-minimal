@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import SortableTree, { toggleExpandedForAll } from "react-sortable-tree";
 import CustomTheme from "../src/index";
+import Add from "../src/icons/Add";
 import "./app.css";
+import Delete from "../src/icons/Delete";
 
 class App extends Component {
   constructor(props) {
@@ -18,13 +20,12 @@ class App extends Component {
           children: [
             {
               title: "Unnamed string",
-              subtitle: "Example output of this block",
               dragDisabled: true,
             },
           ],
         },
         { title: "Unnamed object {}", type: "object" },
-        { title: "Chicken", children: [{ title: "Egg" }] },
+        { title: "Chicken", type: "string", children: [{ title: "Egg" }] },
       ],
     };
     this.updateTreeData = this.updateTreeData.bind(this);
@@ -60,21 +61,6 @@ class App extends Component {
       searchFocusIndex,
       searchFoundCount,
     } = this.state;
-
-    const alertNodeInfo = ({ node, path, treeIndex }) => {
-      const objectString = Object.keys(node)
-        .map((k) =>
-          k === "children" ? "children: Array" : `${k}: '${node[k]}'`
-        )
-        .join(",\n   ");
-
-      global.alert(
-        "Info passed to the icon and button generators:\n\n" +
-          `node: {\n   ${objectString}\n},\n` +
-          `path: [${path.join(", ")}],\n` +
-          `treeIndex: ${treeIndex}`
-      );
-    };
 
     const selectPrevMatch = () =>
       this.setState({
@@ -151,7 +137,6 @@ class App extends Component {
             onChange={this.updateTreeData}
             searchQuery={searchString}
             searchFocusOffset={searchFocusIndex}
-            // style={{ width: "600px" }}
             qHeight={45}
             searchFinishCallback={(matches) =>
               this.setState({
@@ -161,9 +146,10 @@ class App extends Component {
               })
             }
             canDrag={({ node }) => !node.dragDisabled}
-            generateNodeProps={(rowInfo) => ({
+            generateNodeProps={() => ({
               buttons: [
-                <button style={{outline: "none"}} onClick={() => alertNodeInfo(rowInfo)}>i</button>,
+                <Add />,
+                <Delete />
               ],
             })}
           />
