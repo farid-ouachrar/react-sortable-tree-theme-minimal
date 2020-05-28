@@ -147,6 +147,7 @@ class App extends Component {
             }
             canDrag={({ node }) => !node.dragDisabled}
             generateNodeProps={() => ({
+              onClick: () => console.log("YOO"),
               buttons: [
                 <Add />,
                 <Delete />
