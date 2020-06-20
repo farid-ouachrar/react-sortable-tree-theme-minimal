@@ -26,6 +26,7 @@ $hover-padding: 3px;
   height: 100%;
   white-space: nowrap;
   display: flex;
+  pointer-events: none;
 
   & > * {
     box-sizing: border-box;
@@ -182,7 +183,7 @@ $hover-padding: 3px;
   flex: 0 1 auto;
   padding-right: 20px;
   width: 100%;
-  z-index: 500;
+  pointer-events: auto;
 }
 
 .rowToolbar {
@@ -190,7 +191,7 @@ $hover-padding: 3px;
   flex: 0 1 auto;
   display: flex;
   padding-right: 10px;
-  z-index: 500;
+  pointer-events: auto;
   cursor: pointer;
 
   > div {
