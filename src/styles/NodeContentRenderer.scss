@@ -188,8 +188,8 @@ $hover-padding: 3px;
 
 .rowToolbar {
   @extend %rowItem;
-  flex: 0 1 auto;
-  display: flex;
+  // flex: 0 1 auto;
+  // display: flex;
   padding-right: 10px;
   pointer-events: auto;
   cursor: pointer;
