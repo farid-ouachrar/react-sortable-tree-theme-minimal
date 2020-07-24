@@ -1,6 +1,6 @@
 {
   "name": "react-sortable-tree-theme-minimal",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Minimal theme for react-sortable-tree",
   "scripts": {
     "build": "npm run clean && cross-env NODE_ENV=production TARGET=umd webpack --bail",
