@@ -446,6 +446,7 @@
                     _props.swapLength, _props.swapDepth, _props.treeId, _props.isOver, _props.parentNode, 
                     _props.rowDirection, _props.onClick), otherProps = _objectWithoutProperties(_props, [ "scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "icons", "buttons", "className", "style", "didDrop", "swapFrom", "swapLength", "swapDepth", "treeId", "isOver", "parentNode", "rowDirection", "onClick" ]), nodeTitle = title || node.title, nodeSubtitle = subtitle || node.subtitle, isDraggedDescendant = draggedNode && isDescendant(draggedNode, node), isLandingPadActive = !didDrop && isDragging, nodeContent = connectDragPreview(_react2.default.createElement("div", {
                         onClick: onClick,
+                        "node-id": node.id,
                         className: _NodeContentRenderer2.default.rowContents + (isSearchMatch ? " " + _NodeContentRenderer2.default.rowSearchMatch : "") + (isSearchFocus ? " " + _NodeContentRenderer2.default.rowSearchFocus : "") + (canDrag ? "" : " " + _NodeContentRenderer2.default.rowContentsDragDisabled)
                     }, node.type && _react2.default.createElement("span", {
                         className: _NodeContentRenderer2.default.nodeType
@@ -762,12 +763,11 @@
                 key: "render",
                 value: function() {
                     var _props = this.props, children = _props.children, scaffoldBlockPxWidth = (_props.swapFrom, 
-                    _props.swapLength, _props.swapDepth, _props.scaffoldBlockPxWidth), lowerSiblingCounts = _props.lowerSiblingCounts, connectDropTarget = _props.connectDropTarget, isOver = _props.isOver, draggedNode = _props.draggedNode, canDrop = _props.canDrop, node = (_props.treeIndex, 
-                    _props.treeId, _props.listIndex, _props.rowDirection, _props.getPrevRow, _props.node), otherProps = (_props.path, 
-                    _objectWithoutProperties(_props, [ "children", "swapFrom", "swapLength", "swapDepth", "scaffoldBlockPxWidth", "lowerSiblingCounts", "connectDropTarget", "isOver", "draggedNode", "canDrop", "treeIndex", "treeId", "listIndex", "rowDirection", "getPrevRow", "node", "path" ])), scaffoldBlockCount = lowerSiblingCounts.length - 1, dropType = void 0;
+                    _props.swapLength, _props.swapDepth, _props.scaffoldBlockPxWidth), lowerSiblingCounts = _props.lowerSiblingCounts, connectDropTarget = _props.connectDropTarget, isOver = _props.isOver, draggedNode = _props.draggedNode, canDrop = _props.canDrop, otherProps = (_props.treeIndex, 
+                    _props.treeId, _props.listIndex, _props.rowDirection, _props.getPrevRow, _props.node, 
+                    _props.path, _objectWithoutProperties(_props, [ "children", "swapFrom", "swapLength", "swapDepth", "scaffoldBlockPxWidth", "lowerSiblingCounts", "connectDropTarget", "isOver", "draggedNode", "canDrop", "treeIndex", "treeId", "listIndex", "rowDirection", "getPrevRow", "node", "path" ])), scaffoldBlockCount = lowerSiblingCounts.length - 1, dropType = void 0;
                     return canDrop && !isOver ? dropType = "validDrop" : !canDrop && isOver && (dropType = "invalidDrop"), 
                     connectDropTarget(_react2.default.createElement("div", _extends({}, otherProps, {
-                        "node-id": node.id,
                         onMouseOver: this.bound.handleMouseOver,
                         onMouseLeave: this.bound.handleMouseLeave
                     }, otherProps, {

@@ -56,7 +56,6 @@ class MinimalThemeTreeNodeRenderer extends Component {
     return connectDropTarget(
       <div
         {...otherProps}
-        node-id={node.id}
         onMouseOver={this.bound.handleMouseOver}
         onMouseLeave={this.bound.handleMouseLeave}
         {...otherProps}

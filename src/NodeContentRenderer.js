@@ -62,6 +62,7 @@ class MinimalThemeNodeContentRenderer extends Component {
     const isLandingPadActive = !didDrop && isDragging;
     const nodeContent = connectDragPreview( <div
         onClick={onClick}
+        node-id={node.id}
         className={
           styles.rowContents +
           (isSearchMatch ? ` ${styles.rowSearchMatch}` : '') +
