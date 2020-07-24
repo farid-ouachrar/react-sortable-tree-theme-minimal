@@ -15,6 +15,10 @@ $hover-padding: 3px;
   // }
 }
 
+.rowContents[node-state=active] {
+  background-color: rgba($color: blue, $alpha: .1);
+}
+
 .rowWrapperDragDisabled {
   cursor: default;
   &:hover {
