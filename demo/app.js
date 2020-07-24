@@ -17,15 +17,17 @@ class App extends Component {
         {
           title: "Unnamed array []",
           type: "array",
+          id: '111',
           children: [
             {
               title: "Unnamed string",
               dragDisabled: true,
+              id: '114'
             },
           ],
         },
-        { title: "Unnamed object {}", type: "object" },
-        { title: "Chicken", type: "string", children: [{ title: "Egg" }] },
+        { title: "Unnamed object {}", type: "object", id: '112' },
+        { title: "Chicken", type: "string", children: [{ title: "Egg", id: '114' }], id: '113' },
       ],
     };
     this.updateTreeData = this.updateTreeData.bind(this);

@@ -1,26 +1,26 @@
-import React, { Component, Children, cloneElement } from 'react';
-import PropTypes from 'prop-types';
-import styles from './styles/TreeNodeRenderer.scss';
+import React, { Component, Children, cloneElement } from "react";
+import PropTypes from "prop-types";
+import styles from "./styles/TreeNodeRenderer.scss";
 
 class MinimalThemeTreeNodeRenderer extends Component {
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
 
-    this.state = {}
+    this.state = {};
     this.bound = {
       handleMouseOver: this.handleMouseOver.bind(this),
-      handleMouseLeave: this.handleMouseLeave.bind(this)
-    }
+      handleMouseLeave: this.handleMouseLeave.bind(this),
+    };
   }
 
-  handleMouseOver () {
+  handleMouseOver() {
     if (!this.state.highlight) {
-      this.setState({highlight: true})
+      this.setState({ highlight: true });
     }
   }
 
-  handleMouseLeave () {
-    this.setState({highlight: false})
+  handleMouseLeave() {
+    this.setState({ highlight: false });
   }
 
   render() {
@@ -46,20 +46,32 @@ class MinimalThemeTreeNodeRenderer extends Component {
     } = this.props;
     // Construct the scaffold representing the structure of the tree
     const scaffoldBlockCount = lowerSiblingCounts.length - 1;
-    let dropType
+    let dropType;
     if (canDrop && !isOver) {
-      dropType = 'validDrop'
+      dropType = "validDrop";
     } else if (!canDrop && isOver) {
-      dropType = 'invalidDrop'
+      dropType = "invalidDrop";
     }
 
     return connectDropTarget(
-      <div {...otherProps} onMouseOver={this.bound.handleMouseOver} onMouseLeave={this.bound.handleMouseLeave} {...otherProps} onFocus={ () => {} } className={styles.node + (this.state.highlight ? ` ${styles.highlight}` : '') + (dropType ? ` ${styles[dropType]}` : '')}>
+      <div
+        {...otherProps}
+        node-id={node.id}
+        onMouseOver={this.bound.handleMouseOver}
+        onMouseLeave={this.bound.handleMouseLeave}
+        {...otherProps}
+        onFocus={() => {}}
+        className={
+          styles.node +
+          (this.state.highlight ? ` ${styles.highlight}` : "") +
+          (dropType ? ` ${styles[dropType]}` : "")
+        }
+      >
         <div
           className={styles.nodeContent}
-          style={{paddingLeft: scaffoldBlockPxWidth * scaffoldBlockCount}}
+          style={{ paddingLeft: scaffoldBlockPxWidth * scaffoldBlockCount }}
         >
-          {Children.map(children, child =>
+          {Children.map(children, (child) =>
             cloneElement(child, {
               isOver,
               canDrop,
@@ -77,7 +89,7 @@ MinimalThemeTreeNodeRenderer.defaultProps = {
   swapLength: null,
   canDrop: false,
   draggedNode: null,
-  rowDirection: 'ltr'
+  rowDirection: "ltr",
 };
 
 MinimalThemeTreeNodeRenderer.propTypes = {
@@ -103,7 +115,7 @@ MinimalThemeTreeNodeRenderer.propTypes = {
   node: PropTypes.shape({}).isRequired,
   path: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-  ).isRequired
+  ).isRequired,
 };
 
 export default MinimalThemeTreeNodeRenderer;
