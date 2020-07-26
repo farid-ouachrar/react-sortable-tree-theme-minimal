@@ -1,25 +1,24 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styles from './styles/NodeContentRenderer.scss';
-import Chevron from './icons/Chevron';
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import styles from "./styles/NodeContentRenderer.scss";
+import Chevron from "./icons/Chevron";
 
 function isDescendant(older, younger) {
   return (
     !!older.children &&
-    typeof older.children !== 'function' &&
+    typeof older.children !== "function" &&
     older.children.some(
-      child => child === younger || isDescendant(child, younger)
+      (child) => child === younger || isDescendant(child, younger)
     )
   );
 }
-
 
 const nodeTypes = {
   array: "[]",
   object: "{}",
   string: "S",
-  number: "N"
-}
+  number: "N",
+};
 
 // eslint-disable-next-line react/prefer-stateless-function
 class MinimalThemeNodeContentRenderer extends Component {
@@ -34,6 +33,7 @@ class MinimalThemeNodeContentRenderer extends Component {
       canDrag,
       node,
       title,
+      type,
       subtitle,
       draggedNode,
       path,
@@ -60,28 +60,31 @@ class MinimalThemeNodeContentRenderer extends Component {
 
     const isDraggedDescendant = draggedNode && isDescendant(draggedNode, node);
     const isLandingPadActive = !didDrop && isDragging;
-    const nodeContent = connectDragPreview( <div
+    const nodeContent = connectDragPreview(
+      <div
         onClick={onClick}
         node-id={node.id}
         className={
           styles.rowContents +
-          (isSearchMatch ? ` ${styles.rowSearchMatch}` : '') +
-          (isSearchFocus ? ` ${styles.rowSearchFocus}` : '') +
-          (!canDrag ? ` ${styles.rowContentsDragDisabled}` : '')
+          (isSearchMatch ? ` ${styles.rowSearchMatch}` : "") +
+          (isSearchFocus ? ` ${styles.rowSearchFocus}` : "") +
+          (!canDrag ? ` ${styles.rowContentsDragDisabled}` : "")
         }
       >
-        {
-          node.type && <span className={styles.nodeType}>{nodeTypes[node.type]}</span>
-        }
+        {(type && type({
+          className: styles.nodeType
+        })) || (
+          <span className={styles.nodeType}>{nodeTypes[node.type]}</span>
+        )}
 
         <div className={styles.rowLabel}>
           <span
             className={
               styles.rowTitle +
-              (node.subtitle ? ` ${styles.rowTitleWithSubtitle}` : '')
+              (node.subtitle ? ` ${styles.rowTitleWithSubtitle}` : "")
             }
           >
-            {typeof nodeTitle === 'function'
+            {typeof nodeTitle === "function"
               ? nodeTitle({
                   node,
                   path,
@@ -92,7 +95,7 @@ class MinimalThemeNodeContentRenderer extends Component {
 
           {nodeSubtitle && (
             <span className={styles.rowSubtitle}>
-              {typeof nodeSubtitle === 'function'
+              {typeof nodeSubtitle === "function"
                 ? nodeSubtitle({
                     node,
                     path,
@@ -117,10 +120,10 @@ class MinimalThemeNodeContentRenderer extends Component {
     );
 
     return (
-      <div style={{ height: '100%' }} {...otherProps}>
+      <div style={{ height: "100%" }} {...otherProps}>
         {toggleChildrenVisibility &&
           node.children &&
-          (node.children.length > 0 || typeof node.children === 'function') && (
+          (node.children.length > 0 || typeof node.children === "function") && (
             <div>
               <Chevron
                 type="button"
@@ -136,28 +139,29 @@ class MinimalThemeNodeContentRenderer extends Component {
                 }
               />
 
-              {node.expanded &&
-                !isDragging && (
-                  <div
-                    style={{ width: scaffoldBlockPxWidth }}
-                    className={styles.lineChildren}
-                  />
-                )}
+              {node.expanded && !isDragging && (
+                <div
+                  style={{ width: scaffoldBlockPxWidth }}
+                  className={styles.lineChildren}
+                />
+              )}
             </div>
           )}
 
         <div
           className={
             styles.rowWrapper +
-            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : '')
+            (!canDrag ? ` ${styles.rowWrapperDragDisabled}` : "")
           }
         >
           <div
             className={
               styles.row +
-              (isLandingPadActive ? ` ${styles.rowLandingPad}` : '') +
-              (isLandingPadActive && !canDrop ? ` ${styles.rowCancelPad}` : '') +
-              (className ? ` ${className}` : '')
+              (isLandingPadActive ? ` ${styles.rowLandingPad}` : "") +
+              (isLandingPadActive && !canDrop
+                ? ` ${styles.rowCancelPad}`
+                : "") +
+              (className ? ` ${className}` : "")
             }
             style={{
               opacity: isDraggedDescendant ? 0.5 : 1,
@@ -166,7 +170,7 @@ class MinimalThemeNodeContentRenderer extends Component {
             }}
           >
             {canDrag
-              ? connectDragSource(nodeContent, { dropEffect: 'copy' })
+              ? connectDragSource(nodeContent, { dropEffect: "copy" })
               : nodeContent}
           </div>
         </div>
@@ -179,7 +183,7 @@ MinimalThemeNodeContentRenderer.defaultProps = {
   buttons: [],
   canDrag: false,
   canDrop: false,
-  className: '',
+  className: "",
   draggedNode: null,
   icons: [],
   isSearchFocus: false,
@@ -192,8 +196,9 @@ MinimalThemeNodeContentRenderer.defaultProps = {
   swapLength: null,
   title: null,
   toggleChildrenVisibility: null,
-  rowDirection: 'ltr',
-  onClick: () => null
+  rowDirection: "ltr",
+  onClick: () => null,
+  type: null,
 };
 
 MinimalThemeNodeContentRenderer.propTypes = {
@@ -214,6 +219,7 @@ MinimalThemeNodeContentRenderer.propTypes = {
   swapFrom: PropTypes.number,
   swapLength: PropTypes.number,
   title: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
+  type: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   toggleChildrenVisibility: PropTypes.func,
   treeIndex: PropTypes.number.isRequired,
   treeId: PropTypes.string.isRequired,

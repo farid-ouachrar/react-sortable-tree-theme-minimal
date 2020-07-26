@@ -441,14 +441,16 @@
             return _inherits(MinimalThemeNodeContentRenderer, _Component), _createClass(MinimalThemeNodeContentRenderer, [ {
                 key: "render",
                 value: function() {
-                    var _props = this.props, scaffoldBlockPxWidth = _props.scaffoldBlockPxWidth, toggleChildrenVisibility = _props.toggleChildrenVisibility, connectDragPreview = _props.connectDragPreview, connectDragSource = _props.connectDragSource, isDragging = _props.isDragging, canDrop = _props.canDrop, canDrag = _props.canDrag, node = _props.node, title = _props.title, subtitle = _props.subtitle, draggedNode = _props.draggedNode, path = _props.path, treeIndex = _props.treeIndex, isSearchMatch = _props.isSearchMatch, isSearchFocus = _props.isSearchFocus, buttons = (_props.icons, 
+                    var _props = this.props, scaffoldBlockPxWidth = _props.scaffoldBlockPxWidth, toggleChildrenVisibility = _props.toggleChildrenVisibility, connectDragPreview = _props.connectDragPreview, connectDragSource = _props.connectDragSource, isDragging = _props.isDragging, canDrop = _props.canDrop, canDrag = _props.canDrag, node = _props.node, title = _props.title, type = _props.type, subtitle = _props.subtitle, draggedNode = _props.draggedNode, path = _props.path, treeIndex = _props.treeIndex, isSearchMatch = _props.isSearchMatch, isSearchFocus = _props.isSearchFocus, buttons = (_props.icons, 
                     _props.buttons), className = _props.className, style = _props.style, didDrop = _props.didDrop, onClick = (_props.swapFrom, 
                     _props.swapLength, _props.swapDepth, _props.treeId, _props.isOver, _props.parentNode, 
-                    _props.rowDirection, _props.onClick), otherProps = _objectWithoutProperties(_props, [ "scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "icons", "buttons", "className", "style", "didDrop", "swapFrom", "swapLength", "swapDepth", "treeId", "isOver", "parentNode", "rowDirection", "onClick" ]), nodeTitle = title || node.title, nodeSubtitle = subtitle || node.subtitle, isDraggedDescendant = draggedNode && isDescendant(draggedNode, node), isLandingPadActive = !didDrop && isDragging, nodeContent = connectDragPreview(_react2.default.createElement("div", {
+                    _props.rowDirection, _props.onClick), otherProps = _objectWithoutProperties(_props, [ "scaffoldBlockPxWidth", "toggleChildrenVisibility", "connectDragPreview", "connectDragSource", "isDragging", "canDrop", "canDrag", "node", "title", "type", "subtitle", "draggedNode", "path", "treeIndex", "isSearchMatch", "isSearchFocus", "icons", "buttons", "className", "style", "didDrop", "swapFrom", "swapLength", "swapDepth", "treeId", "isOver", "parentNode", "rowDirection", "onClick" ]), nodeTitle = title || node.title, nodeSubtitle = subtitle || node.subtitle, isDraggedDescendant = draggedNode && isDescendant(draggedNode, node), isLandingPadActive = !didDrop && isDragging, nodeContent = connectDragPreview(_react2.default.createElement("div", {
                         onClick: onClick,
                         "node-id": node.id,
                         className: _NodeContentRenderer2.default.rowContents + (isSearchMatch ? " " + _NodeContentRenderer2.default.rowSearchMatch : "") + (isSearchFocus ? " " + _NodeContentRenderer2.default.rowSearchFocus : "") + (canDrag ? "" : " " + _NodeContentRenderer2.default.rowContentsDragDisabled)
-                    }, node.type && _react2.default.createElement("span", {
+                    }, type && type({
+                        className: _NodeContentRenderer2.default.nodeType
+                    }) || _react2.default.createElement("span", {
                         className: _NodeContentRenderer2.default.nodeType
                     }, nodeTypes[node.type]), _react2.default.createElement("div", {
                         className: _NodeContentRenderer2.default.rowLabel
@@ -525,7 +527,8 @@
             rowDirection: "ltr",
             onClick: function() {
                 return null;
-            }
+            },
+            type: null
         }, MinimalThemeNodeContentRenderer.propTypes = {
             buttons: _propTypes2.default.arrayOf(_propTypes2.default.node),
             canDrag: _propTypes2.default.bool,
@@ -542,6 +545,7 @@
             swapFrom: _propTypes2.default.number,
             swapLength: _propTypes2.default.number,
             title: _propTypes2.default.oneOfType([ _propTypes2.default.func, _propTypes2.default.node ]),
+            type: _propTypes2.default.oneOfType([ _propTypes2.default.func, _propTypes2.default.node ]),
             toggleChildrenVisibility: _propTypes2.default.func,
             treeIndex: _propTypes2.default.number.isRequired,
             treeId: _propTypes2.default.string.isRequired,

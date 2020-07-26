@@ -17,17 +17,22 @@ class App extends Component {
         {
           title: "Unnamed array []",
           type: "array",
-          id: '111',
+          id: "111",
           children: [
             {
               title: "Unnamed string",
               dragDisabled: true,
-              id: '114'
+              id: "114",
             },
           ],
         },
-        { title: "Unnamed object {}", type: "object", id: '112' },
-        { title: "Chicken", type: "string", children: [{ title: "Egg", id: '114' }], id: '113' },
+        { title: "Unnamed object {}", type: "object", id: "112" },
+        {
+          title: "Chicken",
+          type: "string",
+          children: [{ title: "Egg", id: "114" }],
+          id: "113",
+        },
       ],
     };
     this.updateTreeData = this.updateTreeData.bind(this);
@@ -149,11 +154,9 @@ class App extends Component {
             }
             canDrag={({ node }) => !node.dragDisabled}
             generateNodeProps={() => ({
+              type: ({ className }) => <span className={className}>S</span>,
               onClick: () => console.log("YOO"),
-              buttons: [
-                <Add />,
-                <Delete />
-              ],
+              buttons: [<Add />, <Delete />],
             })}
           />
         </div>
